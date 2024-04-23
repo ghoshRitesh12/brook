@@ -1,2 +1,3 @@
 # brook
-proposal to make a terminal music player that gets music data from music.youtube.com and streams music in the terminal itself with a minimal text based UI
+
+an idea to make a TUI music player that gets music data from [[music.youtube.com]](https://music.youtube.com) and streams music.
