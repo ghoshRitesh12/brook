@@ -1,35 +1,38 @@
 package ui
 
+// Node is an element in the linked list
 type node[T any] struct {
 	data T
 	next *node[T]
 }
 
+// [NewNode] returns a new node instance of type [T]
+func NewNode[T any](value T, nextPointer *node[T]) *node[T] {
+	return &node[T]{
+		data: value,
+		next: nextPointer,
+	}
+}
+
 // Linked list based stack for navigation purposes
 type stack[T any] struct {
 	length int
-	head   *node[T]
-	tail   *node[T]
+	top    *node[T]
 }
 
 // [NewStack] returns a new stack instance of type [T]
 func NewStack[T any]() *stack[T] {
+	emptyValue := new(T)
 	return &stack[T]{
-		head: &node[T]{},
-		tail: &node[T]{},
+		top: NewNode(*emptyValue, nil),
 	}
 }
 
-// [NewStackWithValue] takes in the first element in the stack returns a new stack instance of type [T]
-func NewStackWithValue[T any](value T) *stack[T] {
+// [NewStackWithData] takes in the first element in the stack returns a new stack instance of type [T]
+func NewStackWithData[T any](data T) *stack[T] {
 	return &stack[T]{
 		length: 1,
-		head: &node[T]{
-			data: value,
-		},
-		tail: &node[T]{
-			data: value,
-		},
+		top:    NewNode(data, nil),
 	}
 }
 
@@ -38,35 +41,23 @@ func (s *stack[T]) Len() int {
 }
 
 func (s *stack[T]) Push(element T) {
-	newElement := &node[T]{data: element}
-	defer func() {
-		s.length += 1
-	}()
+	newElement := NewNode(element, s.top)
+	s.top = newElement
 
-	if s.length > 0 {
-		s.tail.next = newElement
-		s.tail = newElement
-		return
-	}
-
-	s.head = newElement
-	s.tail = newElement
+	s.length++
 }
 
 func (s *stack[T]) Pop() T {
-	defer func() {
-		s.length -= 1
-	}()
+	prevTop := s.top
+	value := prevTop.data
 
-	currentHead := s.head
-	s.head = s.head.next
+	s.top = prevTop.next
+	prevTop = nil
 
-	value := currentHead.data
-	currentHead = nil
-
+	s.length--
 	return value
 }
 
 func (s *stack[T]) Peek() T {
-	return s.head.data
+	return s.top.data
 }
