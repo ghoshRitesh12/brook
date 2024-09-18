@@ -61,8 +61,10 @@ func (s *stack[T]) Pop() T {
 	currentHead := s.head
 	s.head = s.head.next
 
-	currentHead.next = nil
-	return currentHead.data
+	value := currentHead.data
+	currentHead = nil
+
+	return value
 }
 
 func (s *stack[T]) Peek() T {
