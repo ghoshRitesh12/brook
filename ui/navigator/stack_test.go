@@ -8,11 +8,11 @@ import (
 	"github.com/ghoshRitesh12/brook/ui/navigator"
 )
 
-// go test -run TestStack ./ui -v -count=1
+// go test -run TestStack ./ui/navigator -v -count=1
 func TestStack(t *testing.T) {
 	stack := navigator.NewStack[string]()
 
-	stack.Push("hi")
+	stack.Push("hi") // this will be the second last element, as it's a stack
 	stack.Push("this ")
 	stack.Push("is_a")
 	stack.Push("stack_implemented_using_linked_list")
