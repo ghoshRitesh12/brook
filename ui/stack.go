@@ -36,10 +36,12 @@ func NewStackWithData[T any](data T) *stack[T] {
 	}
 }
 
+// [Len] returns the length of the stack
 func (s *stack[T]) Len() int {
 	return s.length
 }
 
+// [Push] adds an element to the top of the stack
 func (s *stack[T]) Push(element T) {
 	newElement := NewNode(element, s.top)
 	s.top = newElement
@@ -47,7 +49,12 @@ func (s *stack[T]) Push(element T) {
 	s.length++
 }
 
-func (s *stack[T]) Pop() T {
+// [Pop] removes the top element from the stack and a boolean indicating if the stack is empty
+func (s *stack[T]) Pop() (T, bool) {
+	if s.length == 0 {
+		return *new(T), false
+	}
+
 	prevTop := s.top
 	value := prevTop.data
 
@@ -55,9 +62,14 @@ func (s *stack[T]) Pop() T {
 	prevTop = nil
 
 	s.length--
-	return value
+	return value, true
 }
 
-func (s *stack[T]) Peek() T {
-	return s.top.data
+// [Peek] returns the top element of the stack and a boolean indicating if the stack is empty
+func (s *stack[T]) Peek() (T, bool) {
+	if s.length == 0 {
+		return *new(T), false
+	}
+
+	return s.top.data, true
 }
