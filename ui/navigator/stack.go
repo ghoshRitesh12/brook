@@ -2,15 +2,15 @@ package navigator
 
 // Node is an element in the [Stack]
 type Node[T any] struct {
-	data T
-	next *Node[T]
+	Data T
+	Next *Node[T]
 }
 
 // [NewNode] returns a new [Node] instance of type [T]
 func NewNode[T any](data T, next *Node[T]) *Node[T] {
 	return &Node[T]{
-		data: data,
-		next: next,
+		Data: data,
+		Next: next,
 	}
 }
 
@@ -55,9 +55,9 @@ func (s *Stack[T]) Pop() (T, bool) {
 	}
 
 	prevTop := s.Top
-	value := prevTop.data
+	value := prevTop.Data
 
-	s.Top = prevTop.next
+	s.Top = prevTop.Next
 	prevTop = nil
 
 	s.Length--
@@ -70,5 +70,5 @@ func (s *Stack[T]) Peek() (T, bool) {
 		return *new(T), false
 	}
 
-	return s.Top.data, true
+	return s.Top.Data, true
 }
