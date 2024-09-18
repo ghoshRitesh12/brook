@@ -6,8 +6,8 @@ type node[T any] struct {
 	next *node[T]
 }
 
-// [NewNode] returns a new node instance of type [T]
-func NewNode[T any](data T, next *node[T]) *node[T] {
+// [newNode] returns a new node instance of type [T]
+func newNode[T any](data T, next *node[T]) *node[T] {
 	return &node[T]{
 		data: data,
 		next: next,
@@ -23,7 +23,7 @@ type stack[T any] struct {
 // [NewStack] returns a new stack instance of type [T]
 func NewStack[T any]() *stack[T] {
 	return &stack[T]{
-		top: NewNode(*new(T), nil),
+		top: newNode(*new(T), nil),
 	}
 }
 
@@ -31,7 +31,7 @@ func NewStack[T any]() *stack[T] {
 func NewStackWithData[T any](data T) *stack[T] {
 	return &stack[T]{
 		length: 1,
-		top:    NewNode(data, nil),
+		top:    newNode(data, nil),
 	}
 }
 
@@ -42,7 +42,7 @@ func (s *stack[T]) Len() int {
 
 // [Push] adds an element to the top of the stack
 func (s *stack[T]) Push(element T) {
-	newElement := NewNode(element, s.top)
+	newElement := newNode(element, s.top)
 	s.top = newElement
 
 	s.length++
