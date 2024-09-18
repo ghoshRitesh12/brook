@@ -1,4 +1,4 @@
-package ui
+package navigator
 
 // Node is an element in the linked list
 type node[T any] struct {
@@ -7,10 +7,10 @@ type node[T any] struct {
 }
 
 // [NewNode] returns a new node instance of type [T]
-func NewNode[T any](value T, nextPointer *node[T]) *node[T] {
+func NewNode[T any](data T, next *node[T]) *node[T] {
 	return &node[T]{
-		data: value,
-		next: nextPointer,
+		data: data,
+		next: next,
 	}
 }
 
@@ -22,9 +22,8 @@ type stack[T any] struct {
 
 // [NewStack] returns a new stack instance of type [T]
 func NewStack[T any]() *stack[T] {
-	emptyValue := new(T)
 	return &stack[T]{
-		top: NewNode(*emptyValue, nil),
+		top: NewNode(*new(T), nil),
 	}
 }
 

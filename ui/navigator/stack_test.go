@@ -1,16 +1,16 @@
-package ui_test
+package navigator_test
 
 import (
 	"fmt"
 	"testing"
 
 	"github.com/davecgh/go-spew/spew"
-	"github.com/ghoshRitesh12/brook/ui"
+	"github.com/ghoshRitesh12/brook/ui/navigator"
 )
 
 // go test -run TestStack ./ui -v -count=1
 func TestStack(t *testing.T) {
-	stack := ui.NewStack[string]()
+	stack := navigator.NewStack[string]()
 
 	stack.Push("hi")
 	stack.Push("this ")
