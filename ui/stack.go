@@ -12,11 +12,24 @@ type stack[T any] struct {
 	tail   *node[T]
 }
 
-// [NewStack] returns a new stack instance with type [T]
+// [NewStack] returns a new stack instance of type [T]
 func NewStack[T any]() *stack[T] {
 	return &stack[T]{
 		head: &node[T]{},
 		tail: &node[T]{},
+	}
+}
+
+// [NewStackWithValue] takes in the first element in the stack returns a new stack instance of type [T]
+func NewStackWithValue[T any](value T) *stack[T] {
+	return &stack[T]{
+		length: 1,
+		head: &node[T]{
+			data: value,
+		},
+		tail: &node[T]{
+			data: value,
+		},
 	}
 }
 
