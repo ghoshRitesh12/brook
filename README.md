@@ -1,14 +1,13 @@
-```
-____                  _
-|  _ \                | |
-| |_) |_ __ ___   ___ | | __
-|  _ <| '__/ _ \ / _ \| |/ /
+```sh
+ _                     _
+| |                   | |
+| |__  _ __ ___   ___ | | __
+|  _ \|  __/ _ \ / _ \| |/ /
 | |_) | | | (_) | (_) |   <
-|____/|_|  \___/ \___/|_|\_\
+|_.__/|_|  \___/ \___/|_|\_\
 ```
 
-an idea to make a TUI music player that gets music data from [music.youtube.com](https://music.youtube.com) and streams music.
-
+An idea to make a TUI music player that gets music data from [music.youtube.com](https://music.youtube.com) and streams music. \
 This app is named after a One Piece character aka [Brook](https://onepiece.fandom.com/wiki/Brook), who is the musician of the Straw Hat Pirates.
 
 There are going to be somewhat like 5 views:
