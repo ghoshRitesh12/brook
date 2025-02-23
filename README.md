@@ -1,10 +1,10 @@
 ```sh
  _                     _
 | |                   | |
-| |__  _ __ ___   ___ | | __
+| |__  ____ ___   ___ | | __
 |  _ \|  __/ _ \ / _ \| |/ /
 | |_) | | | (_) | (_) |   <
-|_.__/|_|  \___/ \___/|_|\_\
+|____/|_|  \___/ \___/|_|\_\
 ```
 
 An idea to make a TUI music player that gets music data from [music.youtube.com](https://music.youtube.com) and streams music. \
