@@ -8,6 +8,8 @@ use reqwest::{
 use scraper::{Html, Selector};
 use std::{env, ffi::OsStr, fs, io::Write, path::PathBuf, sync::Once};
 
+mod cmd;
+
 static SYNC_VERSION: Once = Once::new();
 pub const EXECUTABLE_NAME_PREFIX: &str = "_ytdlp_";
 
@@ -41,9 +43,11 @@ impl YTDlp {
         };
     }
 
-    /// only to be executed once per process
-    pub fn sync_version(&self) {
+    /// Syncs the latest ytdlp version \
+    /// this method should only be called **once** per process
+    pub fn sync_version(&self) -> &Self {
         SYNC_VERSION.call_once(|| self._sync_version());
+        return self;
     }
 
     fn _sync_version(&self) {
