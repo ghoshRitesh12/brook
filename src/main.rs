@@ -18,10 +18,15 @@ pub static YTDLP: Lazy<YTDlp> = ytdlp::init();
 fn main() {
     println!("{ASCII_ART}");
 
-    // regardless of how many times this is called,
-    // it will only be executed once
-    YTDLP.sync_version();
-    YTDLP.sync_version();
+    // sync ytdlp version and start the subprocess
+    YTDLP.sync_version().start();
+
+    YTDLP.exec(vec![
+        "https://www.youtube.com/watch?v=mrV3lSBiGAs",
+        "--get-url",
+        "-f",
+        "bestaudio",
+    ]);
 
     // println!("__, YTDLP_TEMP_PATH: -> {:#?}", YTDLP);
 }
